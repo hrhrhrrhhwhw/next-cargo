@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.12cargo.ru"
+        }
+      ],
+      "destination": "https://12cargo.ru/$1",
+      "permanent": true
+    }
+  ]
+}
