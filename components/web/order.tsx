@@ -23,7 +23,7 @@ type FormValues = {
 
 export default function App() {
     const notify = () => toast("Ваша заявка успешно отправлена");
-
+    const API_URL = process.env.NEXT_PUBLIC_API_URL;
     const {
         control,
         register,
@@ -45,7 +45,7 @@ export default function App() {
 
     const onSubmit: SubmitHandler<FormValues> = async (data) => {
         try {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/form`, {
+            const res = await fetch(`${API_URL}/api/form`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
