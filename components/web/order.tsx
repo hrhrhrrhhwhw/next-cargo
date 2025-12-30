@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { Button } from "../ui/button";
 import data from "@/app/data";
@@ -11,7 +11,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 type FormValues = {
     departure: string;
@@ -22,8 +22,7 @@ type FormValues = {
 };
 
 export default function App() {
-    const notify = () => toast("Ваша заявка успешно отправлена");
-    const API_URL = process.env.NEXT_PUBLIC_API_URL;
+    const API_URL = process.env.NEXT_PUBLIC_API_URL!;
     const {
         control,
         register,
@@ -40,8 +39,6 @@ export default function App() {
             email: "",
         },
     });
-
-    const [age, setAge] = useState("");
 
     const onSubmit: SubmitHandler<FormValues> = async (data) => {
         try {
@@ -92,11 +89,6 @@ export default function App() {
         cisterna: "Цистерна",
         lesovoz: "Лесовозная платформа",
     };
-
-    const handleChange = (event: SelectChangeEvent) => {
-        setAge(event.target.value as string);
-    };
-
 
     return (
         <>
