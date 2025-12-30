@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/web/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
-
 import { Toaster } from "react-hot-toast";
 
 const FontVariable = Montserrat({
@@ -66,6 +66,37 @@ export default function RootLayout({
     return (
         <html lang="ru" suppressHydrationWarning>
             <body className={`${FontVariable.variable} antialiased`}>
+                {/* Yandex Metrika */}
+                <Script id="yandex-metrika" strategy="afterInteractive">
+                    {`(function(m,e,t,r,i,k,a){
+          m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+          m[i].l=1*new Date();
+          for (var j = 0; j < document.scripts.length; j++) {
+            if (document.scripts[j].src === r) { return; }
+          }
+          k=e.createElement(t),a=e.getElementsByTagName(t)[0],
+          k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106075105', 'ym');
+
+        ym(106075105, 'init', {
+          ssr: true,
+          webvisor: true,
+          clickmap: true,
+          ecommerce: "dataLayer",
+          accurateTrackBounce: true,
+          trackLinks: true
+        });`}
+                </Script>
+                <noscript>
+                    <div>
+                        <img
+                            src="https://mc.yandex.ru/watch/106075105"
+                            style={{ position: "absolute", left: "-9999px" }}
+                            alt=""
+                        />
+                    </div>
+                </noscript>
+
                 <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
                     <main className="mx-auto w-full">
                         <Toaster position="top-right" />
