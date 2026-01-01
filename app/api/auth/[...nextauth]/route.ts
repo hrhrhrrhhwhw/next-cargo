@@ -4,17 +4,16 @@ import CredentialsProvider from "next-auth/providers/credentials";
 const handler = NextAuth({
   providers: [
     CredentialsProvider({
-      name: "Admin login",
+      name: "Admin",
       credentials: {
         email: { label: "Email", type: "email" },
-        password: { label: "Password", type: "password" },
       },
-
       async authorize(credentials) {
-        if (
-          credentials?.email === process.env.ADMIN_EMAIL &&
-          credentials?.password === process.env.ADMIN_PASSWORD
-        ) {
+        if (!credentials?.email) {
+          return null;
+        }
+
+        if (credentials.email === process.env.ADMIN_EMAIL) {
           return {
             id: "admin",
             email: credentials.email,
@@ -25,12 +24,9 @@ const handler = NextAuth({
       },
     }),
   ],
-
   session: {
     strategy: "jwt",
   },
-
-  secret: process.env.NEXTAUTH_SECRET,
 });
 
 export { handler as GET, handler as POST };
