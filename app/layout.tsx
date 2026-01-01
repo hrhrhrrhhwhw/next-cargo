@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
+import { AuthProvider } from "@/components/providers/session-provider";
 import Navbar from "@/components/web/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "react-hot-toast";
@@ -96,14 +97,15 @@ export default function RootLayout({
                         />
                     </div>
                 </noscript>
-
-                <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-                    <main className="mx-auto w-full">
-                        <Toaster position="top-right" />
-                        <Navbar />
-                        {children}
-                    </main>
-                </ThemeProvider>
+                <AuthProvider>
+                    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+                        <main className="mx-auto w-full">
+                            <Toaster position="top-right" />
+                            <Navbar />
+                            {children}
+                        </main>
+                    </ThemeProvider>
+                </AuthProvider>
             </body>
         </html>
     );
