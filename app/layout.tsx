@@ -97,9 +97,9 @@ export default function RootLayout({
         var widget = document.createElement('script'); 
         widget.defer = true; 
         widget.dataset.pfId = '92039f37-a4d4-4d50-bc18-8e3118adc062'; 
-        widget.src = 'https://widget.yourgood.app/script/widget.js?id=92039f37-a4d4-4d50-bc18-8e3118adc062&now='+Date.now(); 
+        widget.src = 'https://widget.yourgood.app/script/widget.js?id=92039f37-a4d4-4d50-bc18-8e3118adc062&now=' + Date.now(); 
         document.head.appendChild(widget); 
-      })()
+      })();
     `,
   }}
 />
