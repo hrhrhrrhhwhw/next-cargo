@@ -89,10 +89,17 @@ export default function RootLayout({
         });`}
                 </Script>
                 <Script
+<<<<<<< HEAD
   id="yourgood-widget"
   strategy="afterInteractive"
   dangerouslySetInnerHTML={{
     __html: `
+=======
+                    id="yourgood-widget"
+                    strategy="afterInteractive"
+                    dangerouslySetInnerHTML={{
+                        __html: `
+>>>>>>> c2df023 (add widget yourgood)
       (function () { 
         var widget = document.createElement('script'); 
         widget.defer = true; 
@@ -101,8 +108,13 @@ export default function RootLayout({
         document.head.appendChild(widget); 
       })();
     `,
+<<<<<<< HEAD
   }}
 />
+=======
+                    }}
+                />
+>>>>>>> c2df023 (add widget yourgood)
                 <noscript>
                     <div>
                         <img
