@@ -30,7 +30,7 @@ export const Email = ({ email }: EmailProps) => (
                         Мы предоставляем вагоны для железнодорожных перевозок по РФ и СНГ.
                     </Text>
                     <Img
-                        src="https://12cargo.ru/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimg.035881de.webp&w=3840&q=75"
+                        src="https://12cargo.ru/_next/image?url=%2Fimage%2Fimg.webp&w=3840&q=75"
                         width="400"
                         style={hero}
                     />
