@@ -6,57 +6,41 @@ const services = () => {
         <div>
             <Accordion type="single" collapsible>
                 <AccordionItem value="item-1">
-                    <AccordionTrigger className="uppercase cursor-pointer">
+                    <AccordionTrigger className="uppercase cursor-pointer text-xl md:text-2xl font-bold">
                         Какие вагоны мы предоставляем?
                     </AccordionTrigger>
-                    <AccordionContent className="h-auto leading-7">
+                    <AccordionContent className="flex flex-col gap-4 uppercase h-auto leading-loose text-foreground text-base pl-5">
                         <span>
-                            1. <b>Полувагоны.</b> В полувагонах перевозят сыпучие и навалочные грузы (уголь, руда,
-                            щебень, песок), лесоматериалы, металлопрокат, металлолом, промышленное оборудование,
-                            контейнеры и строительные конструкции, так как эти грузы не требуют защиты от атмосферных
-                            осадков.
+                            полувагоны
                         </span>
                         <br />
                         <span>
-                            2. <b>Крытые вагоны.</b> В крытых вагонах перевозят грузы, требующие защиты от атмосферных
-                            осадков, солнца, краж и повреждений: упакованные товары, продукты питания (муку,
-                            консервы), стройматериалы (цемент в мешках, сухие смеси, древесину), промышленные товары
-                            (станки, оборудование, запчасти), бытовую технику, мебель, текстиль; а также
-                            специализированные грузы — автомобили, бумагу, листовую сталь.
+                            крытые вагоны
                         </span>
                         <br />
                         <span>
-                            3. <b>Цистерны.</b> В цистернах железнодорожных вагонов перевозят широкий спектр жидких и
-                            газообразных грузов, включая нефтепродукты (бензин, дизель, мазут), химические вещества
-                            (кислоты, щелочи, растворители), сжиженные газы (пропан-бутан, аммиак), а также пищевые
-                            продукты (молоко, соки, масло, вино), спирты. Кроме того, используются для транспортировки
-                            мелкодисперсных порошков — муки, цемента, талька. Специализированные цистерны имеют
-                            внутренние покрытия, изоляцию и системы для безопасной перевозки каждого типа груза.
+                            цистерны
                         </span>
                         <br />
                         <span>
-                            4. <b>Лесовозы.</b> В железнодорожных лесовозах перевозят в основном круглый лес (бревна) и
-                            лесоматериалы (пиломатериалы, брус), используя специализированные платформы с высокими
-                            бортами или стойками для надежной фиксации длинных и тяжелых бревен, а также для
-                            транспортировки металлических труб, контейнеров и других длинномерных грузов, требующих
-                            открытого типа вагона.
+                            лесовозные платформы
                         </span>
                         <br />
                     </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="item-2">
-                    <AccordionTrigger className="uppercase cursor-pointer">
+                    <AccordionTrigger className="uppercase cursor-pointer text-xl md:text-2xl font-bold">
                         Что если у меня нет договора с РЖД и нет подъездных путей для погрузки вагона?
                     </AccordionTrigger>
-                    <AccordionContent className="h-auto leading-7">
+                    <AccordionContent className="h-auto leading-7 text-foreground text-base pl-5">
                         Для погрузки и оформления груженого вагона нужен договор с РЖД с открытием лицевого счета (ЕЛС)
                         для оплаты железнодорожного тарифа, а также работник со зданными экзаменами на знания правил
                         погрузки и крепления груза. Мы предоставляем данные услуги в любом регионе России.
                     </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="item-3">
-                    <AccordionTrigger className="uppercase cursor-pointer">Как происходит перевозка поэтапно?</AccordionTrigger>
-                    <AccordionContent className="h-auto leading-7">
+                    <AccordionTrigger className="uppercase cursor-pointer text-xl md:text-2xl font-bold">Как происходит перевозка поэтапно?</AccordionTrigger>
+                    <AccordionContent className="h-auto leading-7 text-foreground text-base pl-5">
                         1. Рассчитываем стоимость перевозки. Железнодорожный тариф, стоимость вагона, услуги погрузки.
                         <br />
                         2. Договариваемся о необходимых услугах. Находим ближайшую грузовую станцию и контрагента у
@@ -70,9 +54,9 @@ const services = () => {
                     </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="item-4">
-                    <AccordionTrigger className="uppercase cursor-pointer">Документы</AccordionTrigger>
+                    <AccordionTrigger className="uppercase cursor-pointer text-xl md:text-2xl font-bold">Документы</AccordionTrigger>
                     <AccordionContent>
-                        <div className="flex flex-col gap-2 h-auto">
+                        <div className="flex flex-col gap-2 h-auto text-foreground text-base pl-5">
                             <button className="h-auto leading-7 flex gap-2 cursor-pointer hover:text-red-800">
                                 <FileDown />
                                 <p>Договор на предоставление вагонов</p>
@@ -85,9 +69,9 @@ const services = () => {
                     </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="item-5">
-                    <AccordionTrigger className="uppercase cursor-pointer">Стоимость услуг погрузки и хранения груза</AccordionTrigger>
+                    <AccordionTrigger className="uppercase cursor-pointer text-xl md:text-2xl font-bold">Стоимость услуг погрузки и хранения груза</AccordionTrigger>
                     <AccordionContent>
-                        <div className="flex flex-col gap-2 h-auto">
+                        <div className="flex flex-col gap-1 text-foreground text-base pl-5">
                             <p>Подача уборка вагона - <b>0 ₽</b></p>
                             <p>Погрузка груза в вагон за тонну - <b>197 ₽</b></p>
                             <p>Хранение груза за тонну в сутки - <b>19 ₽</b></p>

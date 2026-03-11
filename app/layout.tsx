@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Montserrat } from "next/font/google";
+import { Mulish } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/components/providers/session-provider";
 import Navbar from "@/components/web/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "react-hot-toast";
+import Footer from "@/components/web/footer";
 
-const FontVariable = Montserrat({
+const FontVariable = Mulish({
     variable: "--font-google-sans",
     subsets: ["latin"],
 });
@@ -67,7 +68,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="ru" suppressHydrationWarning>
-            <body className={`${FontVariable.variable} antialiased`}>
+            <body className={`${FontVariable.variable} antialiased max-w-380 mx-auto`}>
                 {/* Yandex Metrika */}
                 <Script id="yandex-metrika" strategy="afterInteractive">
                     {`(function(m,e,t,r,i,k,a){
@@ -112,10 +113,11 @@ export default function RootLayout({
                         enableSystem
                         disableTransitionOnChange
                     >
-                        <main className="mx-auto w-full">
+                        <main className="mx-auto">
                             <Toaster position="top-right" />
                             <Navbar />
                             {children}
+                            <Footer />
                         </main>
                     </ThemeProvider>
                 </AuthProvider>

@@ -9,9 +9,11 @@ import Autocomplete from "@mui/material/Autocomplete";
 import Box from "@mui/material/Box";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+import Select from "@mui/material/Select";
+
 
 import toast from "react-hot-toast";
+import { Separator } from "radix-ui";
 
 type FormValues = {
     departure: string;
@@ -91,12 +93,15 @@ export default function App() {
     };
 
     return (
-        <>
-            <h2 className="text-red-800 text-xl font-bold mx-auto flex md:w-3xl px-4  mt-10">
+        <div className="mt-10">
+            <h2 className="text-center text-2xl font-medium">
                 Заявка на предоставление подвижного состава
             </h2>
 
-            <form className="flex flex-col gap-4 w-full md:w-3xl p-4 md:p-12 mx-auto" onSubmit={handleSubmit(onSubmit)}>
+            <form
+                className="flex flex-col gap-4 w-full md:w-3xl p-4 md:p-12 mx-auto"
+                onSubmit={handleSubmit(onSubmit)}
+            >
                 <label htmlFor="departure">Станция отправления</label>
                 <Controller
                     control={control}
@@ -188,6 +193,6 @@ export default function App() {
                     Отправить заявку
                 </Button>
             </form>
-        </>
+        </div>
     );
 }

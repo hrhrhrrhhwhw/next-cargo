@@ -2,7 +2,7 @@ import Services from "@/components/web/services";
 
 const description = () => {
     return (
-        <div className="p-4 md:p-10 flex justify-between mx-auto border-b">
+        <div className="p-4 md:p-10 flex justify-between mx-auto mt-4">
             <div>
                 <p className="text-[#505254] font-medium uppercase hidden md:block">Подробная информация</p>
             </div>
