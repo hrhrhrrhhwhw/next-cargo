@@ -20,7 +20,7 @@ export default function CargoPage() {
 
     const handleLogin = (e: React.FormEvent) => {
         e.preventDefault();
-        if (password === process.env.NEXT_PUBLIC_CARGO_PASSWORD) {
+        if (password === process.env.NEXT_PUBLIC_CARGO) {
             sessionStorage.setItem("cargo-auth", "true");
             setIsAuthenticated(true);
             setError("");
