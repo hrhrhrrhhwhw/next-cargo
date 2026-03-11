@@ -1,14 +1,3 @@
-// import { NextResponse } from "next/server";
-
-// export async function GET(req: Request) {
-//     const { searchParams } = new URL(req.url);
-//     const email = searchParams.get("email");
-
-//     console.log("Unsubscribe:", email);
-
-//     return new NextResponse("Вы успешно отписались от рассылки");
-// }
-
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
@@ -24,11 +13,10 @@ export async function GET(req: Request) {
 
     console.log("Unsubscribe:", email);
 
-    // Отправляем уведомление об отписке
     try {
         await resend.emails.send({
             from: "12cargo@12cargo.ru",
-            to: "smr@12cargo.ru",
+            to: ["smr@12cargo.ru"],
             subject: "❌ Отписка от рассылки",
             html: `
                 <h2>Пользователь отписался от рассылки</h2>

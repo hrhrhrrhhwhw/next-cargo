@@ -16,53 +16,31 @@ export async function POST(req: Request) {
             return NextResponse.json({ error: "Максимум 50 email за раз" }, { status: 400 });
         }
 
-        const results = await Promise.allSettled(
-            emails.map((email) =>
-                resend.emails.send({
-                    from: "12cargo@12cargo.ru",
-                    to: email,
-                    subject: "предоставление вагонов",
-                    react: Email({ email }),
-                }),
-            ),
-        );
+        // Формируем массив писем для batch отправки
+        const batchEmails = emails.map((email) => ({
+            from: "12cargo@12cargo.ru",
+            to: email,
+            subject: "предоставление вагонов",
+            react: Email({ email }),
+        }));
 
-        const successful = results.filter((r) => r.status === "fulfilled").length;
-        const failed = results.filter((r) => r.status === "rejected").length;
+        // Отправляем одним батч-запросом
+        const { data, error } = await resend.batch.send(batchEmails);
+
+        if (error) {
+            console.error("Batch error:", error);
+            return NextResponse.json({ error: "Ошибка при отправке" }, { status: 500 });
+        }
 
         return NextResponse.json({
-            message: `Отправлено ${successful} из ${emails.length} писем`,
-            successful,
-            failed,
-            details: results.map((r, i) => ({
-                email: emails[i],
-                status: r.status,
-                ...(r.status === "rejected" && { error: r.reason?.message }),
-            })),
+            message: `Отправлено ${batchEmails.length} писем`,
+            successful: batchEmails.length,
+            failed: 0,
+            details: data,
         });
+
     } catch (error) {
         console.error("Error sending emails:", error);
         return NextResponse.json({ error: "Ошибка при отправке писем" }, { status: 500 });
-    }
-}
-
-export async function GET() {
-    const testEmails = ["806661@mail.ru"];
-
-    try {
-        const data = await Promise.all(
-            testEmails.map((email) =>
-                resend.emails.send({
-                    from: "12cargo@12cargo.ru",
-                    to: email,
-                    subject: "предоставление вагонов",
-                    react: Email({ email }),
-                }),
-            ),
-        );
-        return NextResponse.json(data);
-    } catch (error) {
-        console.log(error);
-        return NextResponse.json({ error: "Ошибка при отправке тестовых писем" }, { status: 500 });
     }
 }
