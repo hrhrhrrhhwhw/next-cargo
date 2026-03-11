@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const DATA = [
     { id: 1, name: "Подача уборка вагона", price: 0 },
     { id: 2, name: "Погрузка груза в вагон за тонну", price: 197 },
@@ -42,6 +44,9 @@ export default function LadingPage() {
                         ))}
                     </div>
                 </div>
+            </div>
+            <div className="mx-auto mb-10">
+                <Image className="rounded-xl" src="/image/img.webp" width={1200} height={600} alt="" />
             </div>
         </div>
     );
