@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-import { ThemeToggle } from "@/components/web/theme-toggle";
 import { Button } from "../ui/button";
 
 const NAVLINK = [
@@ -26,7 +25,6 @@ export default function Navbar() {
                         {n.name}
                     </Link>
                 ))}
-                <ThemeToggle />
             </div>
             <Link href="/order">
                 <Button variant="outline">Оставить заявку</Button>

@@ -107,19 +107,12 @@ export default function RootLayout({
                     </div>
                 </noscript>
                 <AuthProvider>
-                    <ThemeProvider
-                        attribute="class"
-                        defaultTheme="system"
-                        enableSystem
-                        disableTransitionOnChange
-                    >
-                        <main className="mx-auto">
-                            <Toaster position="top-right" />
-                            <Navbar />
-                            {children}
-                            <Footer />
-                        </main>
-                    </ThemeProvider>
+                    <main className="mx-auto">
+                        <Toaster position="top-right" />
+                        <Navbar />
+                        {children}
+                        <Footer />
+                    </main>
                 </AuthProvider>
             </body>
         </html>
