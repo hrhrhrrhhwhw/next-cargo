@@ -19,7 +19,7 @@ const services = () => {
                         </span>
                         <br />
                         <span>
-                            цистерны
+                            цистерны для нефтепродуктов
                         </span>
                         <br />
                         <span>
