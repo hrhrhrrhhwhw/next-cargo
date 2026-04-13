@@ -1,15 +1,39 @@
-// app/api/form/route.ts
+import { NextResponse } from "next/server";
+
 export async function POST(req: Request) {
-  const body = await req.json();
+    try {
+        const data = await req.json();
 
-  const res = await fetch("https://cargo-backend-gamma.vercel.app/api/form", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body),
-  });
+        const BOT_TOKEN = process.env.BOT_TOKEN!;
+        const CHAT_ID = process.env.CHAT_ID!;
 
-  return new Response(await res.text(), {
-    status: res.status,
-    headers: { "Content-Type": "application/json" },
-  });
+        const message = `
+📨 <b>Новая заявка</b>
+
+🚉 Отправление: ${data.departure}
+🏁 Назначение: ${data.arrive}
+📦 Груз: ${data.cargo}
+🚋 Вагон: ${data.wagonType}
+📧 Email: ${data.email}
+    `;
+
+        const telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+
+        await fetch(telegramUrl, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                chat_id: CHAT_ID,
+                text: message,
+                parse_mode: "HTML",
+            }),
+        });
+
+        return NextResponse.json({ ok: true });
+    } catch (error) {
+        console.error(error);
+        return NextResponse.json({ error: "Telegram error" }, { status: 500 });
+    }
 }

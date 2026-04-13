@@ -16,7 +16,6 @@ export async function POST(req: Request) {
             return NextResponse.json({ error: "Максимум 50 email за раз" }, { status: 400 });
         }
 
-        // Формируем массив писем для batch отправки
         const batchEmails = emails.map((email) => ({
             from: "12cargo@12cargo.ru",
             to: email,
@@ -24,7 +23,6 @@ export async function POST(req: Request) {
             react: Email({ email }),
         }));
 
-        // Отправляем одним батч-запросом
         const { data, error } = await resend.batch.send(batchEmails);
 
         if (error) {

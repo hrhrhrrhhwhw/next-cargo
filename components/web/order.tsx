@@ -10,10 +10,7 @@ import Box from "@mui/material/Box";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-
-
 import toast from "react-hot-toast";
-import { Separator } from "radix-ui";
 
 type FormValues = {
     departure: string;
@@ -24,10 +21,8 @@ type FormValues = {
 };
 
 export default function App() {
-    const API_URL = process.env.NEXT_PUBLIC_API_URL!;
     const {
         control,
-        register,
         handleSubmit,
         reset,
         setError,
@@ -44,7 +39,7 @@ export default function App() {
 
     const onSubmit: SubmitHandler<FormValues> = async (data) => {
         try {
-            const res = await fetch(`${API_URL}/api/form`, {
+            const res = await fetch("/api/form", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -55,7 +50,6 @@ export default function App() {
             if (!res.ok) {
                 const result = await res.json();
 
-                // ошибки с backend (RHF-friendly)
                 if (result.errors) {
                     Object.entries(result.errors).forEach(([field, message]) => {
                         setError(field as keyof FormValues, {
@@ -75,13 +69,9 @@ export default function App() {
                 wagonType: "",
                 email: "",
             });
-            {
-                toast.success("Ваша заявка успешно отправлена");
-            }
+            toast.success("Ваша заявка успешно отправлена");
         } catch (error) {
-            {
-                toast.error("Ваша заявка не отправлена :(");
-            }
+            toast.error("Ваша заявка не отправлена :(");
         }
     };
 
@@ -109,8 +99,8 @@ export default function App() {
                     render={({ field }) => (
                         <Autocomplete
                             options={data.RailwayData}
-                            value={field.value || ""}
-                            onChange={(_, value) => field.onChange(value)}
+                            onChange={(_, value) => field.onChange(value || "")}
+                            value={field.value ?? ""}
                             onBlur={field.onBlur}
                             renderInput={(params) => <TextField {...params} required />}
                             className="bg-white rounded-sm"
@@ -125,8 +115,8 @@ export default function App() {
                     render={({ field }) => (
                         <Autocomplete
                             options={data.RailwayData}
-                            value={field.value || ""}
-                            onChange={(_, value) => field.onChange(value)}
+                            onChange={(_, value) => field.onChange(value || "")}
+                            value={field.value ?? ""}
                             onBlur={field.onBlur}
                             renderInput={(params) => <TextField {...params} required />}
                             className="bg-white rounded-sm"
@@ -141,8 +131,8 @@ export default function App() {
                     render={({ field }) => (
                         <Autocomplete
                             options={data.CargoData}
-                            value={field.value || ""}
-                            onChange={(_, value) => field.onChange(value)}
+                            onChange={(_, value) => field.onChange(value || "")}
+                            value={field.value ?? ""}
                             onBlur={field.onBlur}
                             renderInput={(params) => <TextField {...params} required />}
                             className="bg-white rounded-sm"
@@ -190,7 +180,7 @@ export default function App() {
                     className="cursor-pointer h-12 bg-red-800 mt-5 text-white"
                     type="submit"
                 >
-                    Отправить заявку
+                    {isSubmitting ? "Отправка..." : "Отправить заявку"}
                 </Button>
             </form>
         </div>

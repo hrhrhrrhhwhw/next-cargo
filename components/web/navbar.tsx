@@ -27,7 +27,7 @@ export default function Navbar() {
                 ))}
             </div>
             <Link href="/order">
-                <Button variant="outline">Оставить заявку</Button>
+                <Button variant="default">Оставить заявку</Button>
             </Link>
         </nav>
     );
